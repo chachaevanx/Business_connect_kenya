@@ -66,7 +66,34 @@ document.getElementById("regForm").onsubmit = async (e) => {
   let email = remail.value.toLowerCase();
   let phone = rphone.value.trim();
   if (users.some(u => u.email === email)) { msg("Email already registered."); return; }
+  <p style="text-align: center; margin-top: 10px;">
+  <a href="#" onclick="openForgotModal(); return false;" style="color: #007bff; text-decoration: none; font-size: 14px;">Forgot Password?</a>
+</p>
+function openForgotModal() {
+  closeM('loginModal'); // Close the login modal if it's open
+  document.getElementById('forgotModal').style.display = 'block';
+}
 
+document.getElementById("forgotForm").onsubmit = (e) => {
+  e.preventDefault();
+  let email = document.getElementById("fEmail").value.toLowerCase().trim();
+  let newPass = document.getElementById("nPass").value.trim();
+
+  // Search for the user in your stored array
+  let userRecord = users.find(u => u.email === email);
+
+  if (userRecord) {
+    userRecord.pass = newPass; // Update their password
+    save(); // Save updated users array to localStorage
+    msg("✅ Password updated successfully! Please log in with your new password.");
+    closeM('forgotModal');
+    
+    // Open the login modal so they can log in right away
+    document.getElementById('loginModal').style.display = 'block';
+  } else {
+    msg("❌ Email not found in our records.");
+  }
+};
   let btn = document.getElementById("stkBtn");
   btn.disabled = true;
   btn.textContent = "⏳ Sending M-Pesa STK Push to " + phone + "...";

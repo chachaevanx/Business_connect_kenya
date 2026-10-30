@@ -11,7 +11,7 @@
       padding: 0;
       background-color: #f4f6f9;
       color: #333;
-      line-height: 1.15;
+      line-height: 1.4;
     }
     header {
       background: #007bff;
@@ -90,6 +90,8 @@
       margin-bottom: 15px;
       border-radius: 4px;
       display: none;
+      color: #2d572c;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -97,9 +99,9 @@
 
   <header>
     <h1>Business Connect Kenya</h1>
-    <div>
-      <button onclick="openAuthModal('login')">Login</button>
-      <button onclick="openAuthModal('register')" style="background:#28a745;">Register / Pay</button>
+    <div id="authButtons">
+      <button onclick="openModal('loginModal')">Login</button>
+      <button onclick="openModal('registerModal')" style="background:#28a745;">Register / Pay</button>
     </div>
   </header>
 
@@ -186,7 +188,7 @@
   </div>
 
   <script>
-    // Local storage data initialization
+    // Storage Initialization
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let products = JSON.parse(localStorage.getItem("products")) || [];
     let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
@@ -201,21 +203,20 @@
       setTimeout(() => { box.style.display = "none"; }, 5000);
     }
 
+    function openModal(id) {
+      document.getElementById(id).style.display = 'block';
+    }
+
     function closeModal(id) {
       document.getElementById(id).style.display = 'none';
     }
 
-    function openAuthModal(type) {
-      if (type === 'login') document.getElementById('loginModal').style.display = 'block';
-      if (type === 'register') document.getElementById('registerModal').style.display = 'block';
-    }
-
     function openForgotModal() {
       closeModal('loginModal');
-      document.getElementById('forgotModal').style.display = 'block';
+      openModal('forgotModal');
     }
 
-    // Check auth state on page load
+    // Run on Page Load
     window.onload = () => {
       checkAuthState();
       loadPublicProducts();
@@ -225,17 +226,18 @@
       if (currentUser) {
         document.getElementById("homeView").style.display = "none";
         document.getElementById("sellerDashboard").style.display = "block";
-        document.querySelector("header div").style.display = "none";
+        document.getElementById("authButtons").style.display = "none";
         document.getElementById("welcomeUser").innerText = `Logged in as: ${currentUser.name} (${currentUser.email})`;
         loadSellerProducts();
       } else {
         document.getElementById("homeView").style.display = "block";
         document.getElementById("sellerDashboard").style.display = "none";
-        document.querySelector("header div").style.display = "block";
+        document.getElementById("authButtons").style.display = "block";
+        loadPublicProducts();
       }
     }
 
-    // Registration & M-Pesa STK Push
+    // Registration Handler & M-Pesa STK Push
     document.getElementById("regForm").onsubmit = async (e) => {
       e.preventDefault();
       let name = document.getElementById("rName").value.trim();
@@ -304,18 +306,17 @@
         saveUsers();
         showMsg("✅ Password updated successfully! Please log in.");
         closeModal('forgotModal');
-        openAuthModal('login');
+        openModal('loginModal');
       } else {
         showMsg("❌ Email not found in our records.");
       }
     };
 
-    // Logout
+    // Logout Handler
     function logout() {
       currentUser = null;
       localStorage.removeItem("currentUser");
       checkAuthState();
-      loadPublicProducts();
       showMsg("ℹ️ Logged out successfully.");
     }
 
@@ -341,7 +342,7 @@
       showMsg("✅ Product added successfully!");
     };
 
-    // Load Seller's Own Products
+    // Load Seller's Products on their profile
     function loadSellerProducts() {
       let container = document.getElementById("sellerProductsList");
       if (!container || !currentUser) return;

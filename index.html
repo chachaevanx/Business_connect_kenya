@@ -242,7 +242,6 @@
   </div>
 
   <script>
-    // Storage Initialization
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let products = JSON.parse(localStorage.getItem("products")) || [];
     let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
@@ -272,7 +271,6 @@
       openModal('forgotModal');
     }
 
-    // Run on Page Load
     window.onload = () => {
       checkAuthState();
       loadCounties();
@@ -342,7 +340,6 @@
       });
     }
 
-    // Registration Handler & M-Pesa STK Push
     document.getElementById("regForm").onsubmit = async (e) => {
       e.preventDefault();
       let name = document.getElementById("rName").value.trim();
@@ -358,7 +355,7 @@
       showMsg("⏳ Initiating M-Pesa STK Push... Check your phone.");
 
       try {
-        let response = await fetch("https://business-connect-kenya.onrender.com/api/stk-push", {
+        let response = await fetch("/api/stk-push", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ phone: phone, amount: 10 })
@@ -381,7 +378,6 @@
       }
     };
 
-    // Login Handler
     document.getElementById("loginForm").onsubmit = (e) => {
       e.preventDefault();
       let email = document.getElementById("lEmail").value.toLowerCase().trim();
@@ -399,7 +395,6 @@
       }
     };
 
-    // Password Reset Handler
     document.getElementById("forgotForm").onsubmit = (e) => {
       e.preventDefault();
       let email = document.getElementById("fEmail").value.toLowerCase().trim();
@@ -417,7 +412,6 @@
       }
     };
 
-    // Logout Handler
     function logout() {
       currentUser = null;
       localStorage.removeItem("currentUser");
@@ -425,7 +419,6 @@
       showMsg("ℹ️ Logged out successfully.");
     }
 
-    // Add Product Handler
     document.getElementById("addProductForm").onsubmit = (e) => {
       e.preventDefault();
       if (!currentUser) return;
@@ -448,7 +441,6 @@
       showMsg("✅ Product added successfully!");
     };
 
-    // Load Seller's Products on their profile
     function loadSellerProducts() {
       let container = document.getElementById("sellerProductsList");
       if (!container || !currentUser) return;
@@ -478,7 +470,6 @@
       });
     }
 
-    // Delete Product
     function deleteProduct(id) {
       let index = products.findIndex(p => p.id === id && p.sellerEmail === currentUser.email);
       if (index !== -1) {
@@ -494,7 +485,6 @@
       }
     }
 
-    // Load Public Catalog for Home View
     function loadPublicProducts() {
       let container = document.getElementById("publicProductsList");
       if (!container) return;

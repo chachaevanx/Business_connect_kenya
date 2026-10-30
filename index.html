@@ -1,169 +1,417 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#123b35"><title>Biashara Connect Kenya</title>
-<style>
-:root{--g:#123b35;--g2:#246b58;--gold:#edc66b;--bg:#f5f7f3;--ink:#192923;--muted:#68766f}*{box-sizing:border-box}body{margin:0;font-family:system-ui,Arial;color:var(--ink);background:var(--bg)}a{color:inherit;text-decoration:none}button{cursor:pointer;border:0;font:inherit}.wrap{width:min(1120px,92%);margin:auto}.top{background:var(--g);color:white;padding:8px;font-size:13px}.nav{position:sticky;top:0;background:#fffffff2;backdrop-filter:blur(10px);z-index:5;border-bottom:1px solid #e2e9e3}.navin{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px}.brand{font-weight:900;color:var(--g);font-size:18px}.brand small{display:block;font-size:10px;letter-spacing:2px;color:var(--muted)}.links{display:flex;gap:18px;align-items:center;font-size:14px}.btn{padding:12px 17px;border-radius:12px;font-weight:800}.primary{background:var(--g);color:white}.gold{background:var(--gold);color:#2b281e}.light{background:white;border:1px solid #dce5de;color:var(--g)}.hero{color:white;background:radial-gradient(circle at 85% 20%,#44866d,transparent 35%),linear-gradient(120deg,#0c302b,#24634e);padding:65px 0;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;opacity:.09;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M30 55h70l-8 75H38zM45 55q0-25 20-25t20 25M115 35l25 25-25 25'/%3E%3C/g%3E%3C/svg%3E")}.heroGrid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.eyebrow,.kicker{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:900;color:var(--gold)}h1{font-size:clamp(38px,6vw,64px);line-height:1.05;margin:12px 0;letter-spacing:-2px}h1 span{color:var(--gold)}.hero p{line-height:1.7;color:#e3eee7}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.search{display:flex;background:white;padding:7px;border-radius:13px;gap:6px}.search input,.search select{min-width:0;flex:1;border:0;padding:10px;outline:0}.heroimg{position:relative}.heroimg img{width:100%;height:330px;object-fit:cover;border:7px solid #ffffff25;border-radius:25px;box-shadow:0 20px 45px #001b1744;transition:opacity 0.8s ease-in-out}.bubble{position:absolute;background:white;color:var(--g);padding:12px 15px;border-radius:13px;font-weight:800;box-shadow:0 10px 30px #0002;z-index:2}.bubble.one{top:20px;left:-15px}.bubble.two{bottom:18px;right:-10px}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}.section{padding:55px 0}.head{margin-bottom:22px}.head h2{margin:6px 0;font-size:30px}.head p,.muted{color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:white;border:1px solid #e3e9e4;border-radius:17px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px #173b3017}.card img{width:100%;height:170px;object-fit:cover}.body{padding:13px}.body h3{font-size:16px;margin:0 0 7px}.price{font-weight:900;color:var(--g);margin:9px 0}.catgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.cat{background:white;border:1px solid #e1e8e2;border-radius:14px;text-align:center;padding:17px 5px;font-weight:800}.ico{font-size:25px;margin-bottom:8px}.split{display:grid;grid-template-columns:1fr 1fr;gap:18px}.promo{border-radius:20px;padding:26px;background:#e6f0e8}.promo.dark{background:var(--g);color:white}.promo p{line-height:1.6;color:var(--muted)}.promo.dark p{color:#d8e8df}.chips{display:flex;gap:9px;flex-wrap:wrap}.chips button{background:white;border:1px solid #dce5de;padding:10px 14px;border-radius:25px}.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.review{background:white;border:1px solid #e3e9e4;border-radius:15px;padding:18px}.footer{background:#102f2a;color:white;padding:35px 0}.footer p{color:#c4d4cb;line-height:1.6}.modal{display:none;position:fixed;inset:0;background:#071c18aa;z-index:20;align-items:center;justify-content:center;padding:15px}.modal.show{display:flex}.box{background:white;padding:24px;border-radius:18px;width:min(520px,100%);max-height:90vh;overflow:auto;position:relative}.close{float:right;background:#edf2ee;border-radius:50%;padding:5px 11px}.field{margin:12px 0}.field label{display:block;font-weight:750;font-size:13px;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #dce5de;border-radius:9px}.field textarea{min-height:75px}.notice{background:#fff5d9;padding:12px;border-radius:10px;font-size:13px;line-height:1.5}.dashboard{display:none;padding:35px 0}.dash{display:grid;grid-template-columns:210px 1fr;gap:16px}.side,.panel{padding:20px;background:white;border:1px solid #e1e8e2;border-radius:16px}.side button{display:block;width:100%;padding:11px;text-align:left;background:white;border-radius:8px}.side button:hover{background:#edf4ef}.stats{display:flex;gap:10px;flex-wrap:wrap}.stat{background:#edf4ef;padding:14px;border-radius:12px;min-width:120px}.stat b{display:block;font-size:22px;color:var(--g)}.table{width:100%}.table td,.table th{padding:10px;border-bottom:1px solid #e5ebe6;text-align:left;font-size:13px}.toast{display:none;position:fixed;bottom:15px;left:50%;transform:translateX(-50%);background:var(--g);color:white;padding:12px 18px;border-radius:10px;z-index:30}.toast.show{display:block}@media(max-width:800px){.links{display:none}.heroGrid{grid-template-columns:1fr}.heroimg img{height:250px}.grid{grid-template-columns:repeat(2,1fr)}.catgrid{grid-template-columns:repeat(3,1fr)}.dash{grid-template-columns:1fr}}@media(max-width:520px){.section{padding:40px 0}.search{flex-wrap:wrap}.search input{flex-basis:100%}.split{grid-template-columns:1fr}.reviews{grid-template-columns:1fr}.grid{gap:10px}.card img{height:130px}.catgrid{grid-template-columns:repeat(2,1fr)}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style></head><body>
-<div class="top">🇰🇪 Connecting buyers and businesses across all 47 counties · Customers browse free</div>
-<header class="nav"><div class="wrap navin"><a class="brand" href="#">🟢 BIASHARA CONNECT<small>DISCOVER · CONNECT · GROW</small></a><nav class="links"><a href="#products">Listings</a><a href="#categories">Categories</a><a href="#counties">Counties</a><a href="#contact">Contact</a><button class="btn light" onclick="login()">Owner login</button></nav><button class="btn primary" onclick="register()">Sell with us</button></div></header>
-<main id="home">
-<section class="hero"><div class="wrap heroGrid"><div style="animation:rise .8s both"><div class="eyebrow">Kenya's marketplace for local businesses</div><h1>Discover more.<br><span id="word">Shop local.</span></h1><p>Find houses, rentals, plots, cars, products, and trusted services near you across Kenya.</p><div class="actions"><a class="btn gold" href="#products">Explore marketplace →</a><button class="btn light" onclick="register()">Register your business</button></div><div class="search"><input id="search" placeholder="Search houses, cars, plots, products..." oninput="render()"><select id="county" onchange="render()"><option value="">All counties</option></select><button class="btn primary" onclick="document.getElementById('products').scrollIntoView()">Search</button></div></div><div class="heroimg"><img id="heroSlideImg" src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1000&q=85" alt="Marketplace Showcase"><div class="bubble one" id="heroBubble">🏠 Modern Houses</div><div class="bubble two">🇰🇪 Made for Kenya</div></div></div></section>
-<section class="section" id="products"><div class="wrap"><div class="head"><div class="kicker">Explore marketplace</div><h2>Featured listings & services</h2><p>Browse properties, vehicles, items, and professional services from verified sellers.</p></div><div class="grid" id="catalogue"></div></div></section>
-<section class="section" id="categories" style="background:#edf3ee"><div class="wrap"><div class="head"><div class="kicker">Find what you need</div><h2>Browse categories</h2></div><div class="catgrid"><a class="cat" href="#products" onclick="cat('Houses')"><div class="ico">🏠</div>Houses</a><a class="cat" href="#products" onclick="cat('Rentals')"><div class="ico">🏢</div>Rentals</a><a class="cat" href="#products" onclick="cat('Plots')"><div class="ico">🧱</div>Plots</a><a class="cat" href="#products" onclick="cat('Cars')"><div class="ico">🚗</div>Cars</a><a class="cat" href="#products" onclick="cat('Electronics')"><div class="ico">📱</div>Electronics</a><a class="cat" href="#products" onclick="cat('Fashion')"><div class="ico">👗</div>Fashion</a><a class="cat" href="#products" onclick="cat('Agriculture')"><div class="ico">🌾</div>Agriculture</a><a class="cat" href="#products" onclick="cat('Food')"><div class="ico">🥑</div>Food</a><a class="cat" href="#products" onclick="cat('Home')"><div class="ico">🛋️</div>Home</a><a class="cat" href="#products" onclick="cat('Services')"><div class="ico">🧰</div>Services</a></div></div></section>
-<section class="section"><div class="wrap split"><div class="promo"><div class="kicker">For buyers</div><h2>Find what you need.</h2><p>Browse for free, search by county, compare houses, plots, cars and products, and contact sellers directly through WhatsApp.</p><a class="btn primary" href="#products">Start exploring</a></div><div class="promo dark"><div class="kicker">For sellers</div><h2>Grow your business.</h2><p>Create your owner account, manage your business profile, and list your properties, vehicles, or products.</p><button class="btn gold" onclick="register()">Join as a seller</button></div></div></section>
-<section class="section" id="counties" style="background:#edf3ee"><div class="wrap"><div class="head"><div class="kicker">Across Kenya</div><h2>Explore by county</h2></div><div class="chips" id="countyChips"></div></div></section>
-<section class="section"><div class="wrap"><div class="head"><div class="kicker">Build trust</div><h2>Customer ratings & reviews</h2><p>Real customer feedback will help buyers choose confidently.</p></div><div class="reviews"><div class="review">★★★★★<p class="muted">Genuine customer experiences will appear here.</p></div><div class="review">★★★★★<p class="muted">Ratings will be linked to real business listings.</p></div><div class="review">★★★★★<p class="muted">Customers can report inappropriate or misleading reviews.</p></div></div></div></section>
-</main>
-<section class="dashboard" id="dashboard"><div class="wrap"><h2 id="dashName">Business owner dashboard</h2><p class="muted">Manage your own profile and catalogue.</p><div class="dash"><aside class="side"><button onclick="tab('overview')">Overview</button><button onclick="tab('profile')">Business profile</button><button onclick="tab('products')">My listings</button><button onclick="logout()">Sign out</button></aside><div class="panel"><div id="overview"><h3>Welcome, <span id="ownerWelcome"></span></h3><div class="stats"><div class="stat"><b id="countProducts">0</b>My listings</div><div class="stat"><b>—</b>Profile views</div><div class="stat"><b id="accountStatusBadge">Demo</b>Account status</div></div></div><div id="profile" hidden><h3>Business profile</h3><form id="profileForm"><div class="field"><label>Owner full name</label><input id="ownerName" required></div><div class="field"><label>Business/Agency name</label><input id="businessName" required></div><div class="field"><label>WhatsApp Phone Number</label><input id="businessPhone" placeholder="e.g. 0799446312" required></div><div class="field"><label>County</label><select id="businessCounty"></select></div><div class="field"><label>Town / City</label><input id="businessTown" placeholder="e.g. Njoro, Nakuru" required></div><div class="field"><label>Business description</label><textarea id="businessDesc"></textarea></div><div class="field"><label>Required owner profile picture</label><input id="profilePic" type="file" accept="image/*" required></div><div class="field"><label>Business logo (optional)</label><input type="file" accept="image/*"></div><button class="btn primary">Save profile</button></form></div><div id="myproducts" hidden><h3>My listings (Houses, Plots, Cars, Goods)</h3><button class="btn primary" onclick="addProduct()">+ Add listing</button><div id="myList"></div></div></div></div></div></section>
-<footer class="footer" id="contact"><div class="wrap"><h2>BIASHARA CONNECT KENYA</h2><p>Discover. Connect. Grow. · Buyers browse free · Trusted Kenyan marketplace.</p><p>WhatsApp: <a href="https://wa.me/254799446312" target="_blank" style="color:var(--gold);text-decoration:underline;">0799446312</a> | Email: <a href="mailto:chachaevanx@gmail.com" style="color:var(--gold);text-decoration:underline;">chachaevanx@gmail.com</a></p><small>© <span id="year"></span> Biashara Connect Kenya</small></div></footer>
-
-<!-- Registration Modal with M-Pesa STK Push Integration -->
-<div class="modal" id="regModal"><div class="box"><button class="close" onclick="closeM('regModal')">✕</button><h2>Register your business</h2><p class="notice">One-time seller registration fee: <b>KSh 500</b>. Enter your M-Pesa phone number below to receive an STK Push payment prompt.</p><form id="regForm"><div class="field"><label>Full name</label><input id="rname" required></div><div class="field"><label>Email</label><input id="remail" type="email" required></div><div class="field"><label>Password</label><input id="rpass" type="password" minlength="8" required></div><div class="field"><label>WhatsApp / M-Pesa Phone Number</label><input id="rphone" placeholder="e.g. 0799446312" required></div><button class="btn primary" type="submit" id="stkBtn">Pay KSh 500 & Register via M-Pesa</button></form></div></div>
-
-<div class="modal" id="loginModal"><div class="box"><button class="close" onclick="closeM('loginModal')">✕</button><h2>Owner login</h2><p class="notice">Owner login to manage your listings and profile.</p><form id="loginForm"><div class="field"><label>Email</label><input id="lemail" type="email" required></div><div class="field"><label>Password</label><input id="lpass" type="password" required></div><button class="btn primary">Log in</button></form></div></div>
-
-<!-- Add Listing Modal with Location & WhatsApp -->
-<div class="modal" id="prodModal"><div class="box"><button class="close" onclick="closeM('prodModal')">✕</button><h2>Add listing</h2><form id="prodForm"><div class="field"><label>Title (e.g. 3 Bedroom House, Toyota Vitz)</label><input id="pname" required></div><div class="field"><label>Price (KSh)</label><input id="pprice" type="number" min="0" required></div><div class="field"><label>Category</label><select id="pcat"><option>Houses</option><option>Rentals</option><option>Plots</option><option>Cars</option><option>Electronics</option><option>Fashion</option><option>Agriculture</option><option>Food</option><option>Home</option><option>Services</option></select></div><div class="field"><label>County</label><select id="pcounty" required></select></div><div class="field"><label>Town / City</label><input id="ptown" placeholder="e.g. Nakuru Town, Naivasha" required></div><div class="field"><label>WhatsApp Number for this listing</label><input id="pphone" placeholder="e.g. 0799446312" required></div><div class="field"><label>Description</label><textarea id="pdesc"></textarea></div><div class="field"><label>Listing photo</label><input id="pimg" type="file" accept="image/*"></div><button class="btn primary">Save listing</button></form></div></div><div class="toast" id="toast"></div>
-
-<script>
-const counties=["Baringo","Bomet","Bungoma","Busia","Elgeyo-Marakwet","Embu","Garissa","Homa Bay","Isiolo","Kajiado","Kakamega","Kericho","Kiambu","Kilifi","Kirinyaga","Kisii","Kisumu","Kitui","Kwale","Laikipia","Lamu","Machakos","Makueni","Mandera","Marsabit","Meru","Migori","Mombasa","Murang'a","Nairobi","Nakuru","Nandi","Narok","Nyamira","Nyandarua","Nyeri","Samburu","Siaya","Taita-Taveta","Tana River","Tharaka-Nithi","Trans Nzoia","Turkana","Uasin Gishu","Vihiga","Wajir","West Pokot"];
-let sample=[
-  ["3 Bedroom Modern House","8500000","Houses","Nairobi","Nairobi CBD","https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=650&q=80","0799446312"],
-  ["1 Bedroom Apartment Rental","25000","Rentals","Nakuru","Nakuru Town","https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=650&q=80","0799446312"],
-  ["50x100ft Prime Plot","1200000","Plots","Kiambu","Thika","https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=650&q=80","0799446312"],
-  ["Toyota Axio Saloon","1350000","Cars","Mombasa","Nyali","https://images.unsplash.com/photo-1550355191-aa8065f3562b?auto=format&fit=crop&w=650&q=80","0799446312"],
-  ["Smartphone","18500","Electronics","Nairobi","CBD","https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=650&q=80","0799446312"]
-];
-
-const heroSlides=[
-  {img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1000&q=85", label:"🏠 Modern Houses"},
-  {img:"https://images.unsplash.com/photo-1550355191-aa8065f3562b?auto=format&fit=crop&w=1000&q=85", label:"🚗 Cars & Vehicles"},
-  {img:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=85", label:"🧱 Plots & Land"},
-  {img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1000&q=85", label:"📱 Electronics & Tech"},
-  {img:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1000&q=85", label:"👗 Fashion & Style"}
-];
-let heroIndex=0;
-setInterval(()=>{
-  heroIndex=(heroIndex+1)%heroSlides.length;
-  let imgEl=document.getElementById("heroSlideImg");
-  let bubbleEl=document.getElementById("heroBubble");
-  if(imgEl&&bubbleEl){
-    imgEl.style.opacity=0;
-    setTimeout(()=>{
-      imgEl.src=heroSlides[heroIndex].img;
-      bubbleEl.textContent=heroSlides[heroIndex].label;
-      imgEl.style.opacity=1;
-    },400);
-  }
-},4000);
-
-let items=JSON.parse(localStorage.getItem("bcitems")||"null")||sample.map((x,i)=>({id:"s"+i,name:x[0],price:x[1],category:x[2],county:x[3],town:x[4],image:x[5],phone:x[6],owner:"Biashara Connect Admin"}));let user=null,users=JSON.parse(localStorage.getItem("bcusers")||"[]");
-
-function msg(t){let x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),3500)}function save(){localStorage.setItem("bcitems",JSON.stringify(items));localStorage.setItem("bcusers",JSON.stringify(users))}function register(){document.getElementById("regModal").classList.add("show")}function login(){document.getElementById("loginModal").classList.add("show")}function closeM(id){document.getElementById(id).classList.remove("show")}
-
-function render(){let q=document.getElementById("search").value.toLowerCase(),c=document.getElementById("county").value;let a=items.filter(p=>(!q||[p.name,p.category,p.county,p.town,p.owner].join(" ").toLowerCase().includes(q))&&(!c||p.county===c));document.getElementById("catalogue").innerHTML=a.map(p=>`<article class="card"><img src="${p.image||'https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?auto=format&fit=crop&w=650&q=80'}" alt="${p.name}"><div class="body"><h3>${p.name}</h3><div class="muted">${p.owner||"Local business"} · <span style="cursor:pointer;color:#246b58;text-decoration:underline;font-weight:700;" onclick="whatsapp('${p.phone||'0799446312'}','${p.name}')">${p.phone||'0799446312'}</span></div><div class="muted">📍 ${p.town?p.town+", ":""}${p.county||"Kenya"}</div><div class="price">KSh ${Number(p.price).toLocaleString()}</div><button class="btn primary" onclick="whatsapp('${p.phone||'0799446312'}','${p.name}')">WhatsApp enquiry</button></div></article>`).join("")||"<p>No matching listings yet.</p>"}function cat(c){document.getElementById("search").value=c;render()}function whatsapp(phone,name){let targetPhone=phone||"0799446312";let n=targetPhone.replace(/\D/g,"");if(n.startsWith("0"))n="254"+n.slice(1);window.open("https://wa.me/"+n+"?text="+encodeURIComponent("Hello, I am enquiring about "+name+" on Biashara Connect Kenya."),"_blank")}
-document.getElementById("regForm").onsubmit = async (e) => {
-  e.preventDefault();
-  let email = remail.value.toLowerCase();
-  let phone = rphone.value.trim();
-  if (users.some(u => u.email === email)) { msg("Email already registered."); return; }
-  <p style="text-align: center; margin-top: 10px;">
-  <a href="#" onclick="openForgotModal(); return false;" style="color: #007bff; text-decoration: none; font-size: 14px;">Forgot Password?</a>
-</p>
-function openForgotModal() {
-  closeM('loginModal'); // Close the login modal if it's open
-  document.getElementById('forgotModal').style.display = 'block';
-}
-
-document.getElementById("forgotForm").onsubmit = (e) => {
-  e.preventDefault();
-  let email = document.getElementById("fEmail").value.toLowerCase().trim();
-  let newPass = document.getElementById("nPass").value.trim();
-
-  // Search for the user in your stored array
-  let userRecord = users.find(u => u.email === email);
-
-  if (userRecord) {
-    userRecord.pass = newPass; // Update their password
-    save(); // Save updated users array to localStorage
-    msg("✅ Password updated successfully! Please log in with your new password.");
-    closeM('forgotModal');
-    
-    // Open the login modal so they can log in right away
-    document.getElementById('loginModal').style.display = 'block';
-  } else {
-    msg("❌ Email not found in our records.");
-  }
-};
-  let btn = document.getElementById("stkBtn");
-  btn.disabled = true;
-  btn.textContent = "⏳ Sending M-Pesa STK Push to " + phone + "...";
-  msg("STK Push sent to " + phone + ". Check your phone and enter your PIN.");
-
-  try {
-    let response = await fetch('https://business-connect-kenya.onrender.com/api/stk-push', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ phone: phone, amount: 500 })
-    });
-    let result = await response.json();
-
-    if (result.success) {
-      user = { id: Date.now(), name: rname.value, email, pass: rpass.value, phone, profile: { phone }, paid: true };
-      users.push(user);
-      save();
-      closeM("regModal");
-      openDash();
-      msg("✅ M-Pesa Payment Prompt Sent! Enter your PIN.");
-    } else {
-      msg("❌ Payment failed. Please check details.");
-      btn.disabled = false;
-      btn.textContent = "Pay KSh 500 & Register via M-Pesa";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Connect Kenya</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.15;
     }
-  } catch (err) {
-    msg("❌ Network error connecting to payment server.");
-    btn.disabled = false;
-    btn.textContent = "Pay KSh 500 & Register via M-Pesa";
-  }
-};
+    header {
+      background: #007bff;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+    .modal-content {
+      background: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 8px;
+      position: relative;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      background: #fff;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    #msgBox {
+      background: #e2f0d9;
+      border: 1px solid #c8e6b1;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
 
-  setTimeout(()=>{
-    btn.disabled=false;
-    btn.textContent="Pay KSh 500 & Register via M-Pesa";
-    user={id:Date.now(),name:rname.value,email,pass:rpass.value,phone,profile:{phone},paid:true};
-    users.push(user);
-    save();
-    closeM("regModal");
-    openDash();
-    msg("✅ Payment received successfully via M-Pesa! Account verified.");
-  }, 3000);
-};
+  <header>
+    <h1>Business Connect Kenya</h1>
+    <div>
+      <button onclick="openAuthModal('login')">Login</button>
+      <button onclick="openAuthModal('register')" style="background:#28a745;">Register / Pay</button>
+    </div>
+  </header>
 
-document.getElementById("loginForm").onsubmit=e=>{e.preventDefault();let u=users.find(x=>x.email===lemail.value.toLowerCase()&&x.pass===lpass.value);if(!u){msg("Demo account not found.");return}user=u;closeM("loginModal");openDash()};
+  <div class="container">
+    <div id="msgBox"></div>
 
-function openDash(){document.getElementById("home").style.display="none";document.getElementById("dashboard").style.display="block";document.getElementById("ownerWelcome").textContent=user.name;document.getElementById("accountStatusBadge").textContent=user.paid?"Verified (Paid)":"Demo";showTab("overview");renderMine();window.scrollTo(0,0)}function showTab(t){["overview","profile","myproducts"].forEach(x=>document.getElementById(x).hidden=x!==t)}function tab(t){showTab(t==="products"?"myproducts":t);if(t==="profile"){ownerName.value=user.profile.ownerName||user.name;businessName.value=user.profile.businessName||"";businessPhone.value=user.profile.phone||user.phone;businessCounty.value=user.profile.county||counties[0];businessTown.value=user.profile.town||"";businessDesc.value=user.profile.description||""}}
+    <!-- Home View / Public Products Catalog -->
+    <div id="homeView">
+      <h2>Welcome to Business Connect Kenya</h2>
+      <p>Browse products and services from verified local vendors across Kenya.</p>
+      <hr style="border:0; border-top:1px solid #eee; margin:20px 0;">
+      <h3>Marketplace Listings</h3>
+      <div id="publicProductsList">
+        <p style="color:#666;">Loading available products...</p>
+      </div>
+    </div>
 
-document.getElementById("profileForm").onsubmit=e=>{e.preventDefault();let f=profilePic.files[0];if(!user.profile.photo&&!f){msg("Please upload a profile picture.");return}let finish=photo=>{user.profile={ownerName:ownerName.value,businessName:businessName.value,phone:businessPhone.value,county:businessCounty.value,town:businessTown.value,description:businessDesc.value,photo:photo||user.profile.photo};users=users.map(u=>u.id===user.id?user:u);save();msg("Profile and location saved successfully.")};if(f){let r=new FileReader();r.onload=()=>finish(r.result);r.readAsDataURL(f)}else finish("")};
+    <!-- Seller Dashboard (Hidden until logged in) -->
+    <div id="sellerDashboard" style="display:none;">
+      <h2>Seller Dashboard</h2>
+      <p id="welcomeUser" style="color:#007bff; font-weight:bold;"></p>
+      <button onclick="logout()" style="background:#dc3545; margin-bottom:20px;">Log Out</button>
+      
+      <!-- Add Product Form -->
+      <form id="addProductForm" style="background:#f9f9f9; padding:15px; border-radius:5px; margin-bottom:20px;">
+        <h3>Add New Product</h3>
+        <input type="text" id="prodName" placeholder="Product Name" required>
+        <input type="number" id="prodPrice" placeholder="Price (KSh)" required>
+        <textarea id="prodDesc" placeholder="Product Description" required></textarea>
+        <input type="text" id="prodImage" placeholder="Image URL (optional)">
+        <button type="submit" style="background:#28a745; width:100%;">Add Product</button>
+      </form>
 
-function addProduct(){
-  if(user.profile && user.profile.county) pcounty.value = user.profile.county;
-  if(user.profile && user.profile.town) ptown.value = user.profile.town;
-  if(user.profile && user.profile.phone) pphone.value = user.profile.phone;
-  prodModal.classList.add("show");
-}
+      <h3>My Profile Products</h3>
+      <div id="sellerProductsList">
+        <p style="color:#666;">You haven't added any products yet.</p>
+      </div>
+    </div>
+  </div>
 
-document.getElementById("prodForm").onsubmit=e=>{e.preventDefault();let f=pimg.files[0],finish=image=>{items.push({id:Date.now(),ownerId:user.id,owner:user.profile.businessName||user.name,phone:pphone.value||user.profile.phone||user.phone,county:pcounty.value,town:ptown.value,name:pname.value,price:pprice.value,category:pcat.value,description:pdesc.value,image:image||""});save();render();renderMine();closeM("prodModal");msg("Listing saved successfully with location.")};if(f){let r=new FileReader();r.onload=()=>finish(r.result);r.readAsDataURL(f)}else finish("")};
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span onclick="closeModal('loginModal')" style="cursor:pointer; float:right; font-size:22px; font-weight:bold;">&times;</span>
+      <h3>Seller Login</h3>
+      <form id="loginForm">
+        <input type="email" id="lEmail" placeholder="Enter your email" required>
+        <input type="password" id="lPass" placeholder="Enter your password" required>
+        <button type="submit" style="width:100%; margin-top:10px;">Login</button>
+      </form>
+      <p style="text-align: center; margin-top: 15px;">
+        <a href="#" onclick="openForgotModal(); return false;" style="color: #007bff; text-decoration: none; font-size: 14px;">Forgot Password?</a>
+      </p>
+    </div>
+  </div>
 
-function renderMine(){let mine=items.filter(p=>p.ownerId===user.id);countProducts.textContent=mine.length;myList.innerHTML=mine.length?'<table class="table"><tr><th>Listing</th><th>Location</th><th>Price</th><th></th></tr>'+mine.map(p=>`<tr><td>${p.name}</td><td>${p.town||''}, ${p.county||''}</td><td>KSh ${p.price}</td><td><button onclick="removeProduct(${p.id})">Remove</button></td></tr>`).join("")+'</table>':"<p class='muted'>No listings added yet.</p>"}function removeProduct(id){items=items.filter(p=>!(p.id===id&&p.ownerId===user.id));save();render();renderMine()}function logout(){user=null;dashboard.style.display="none";home.style.display="block"}
+  <!-- Register Modal (with M-Pesa STK Push) -->
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <span onclick="closeModal('registerModal')" style="cursor:pointer; float:right; font-size:22px; font-weight:bold;">&times;</span>
+      <h3>Register & Pay (M-Pesa)</h3>
+      <form id="regForm">
+        <input type="text" id="rName" placeholder="Full Name" required>
+        <input type="email" id="rEmail" placeholder="Email Address" required>
+        <input type="password" id="rPass" placeholder="Password" required>
+        <input type="text" id="rPhone" placeholder="M-Pesa Phone (2547XXXXXXXX)" required>
+        <button type="submit" style="background:#28a745; width:100%; margin-top:10px;">Pay & Register</button>
+      </form>
+    </div>
+  </div>
 
-document.getElementById("year").textContent=new Date().getFullYear();
-let opts='<option value="">All counties</option>'+counties.map(c=>`<option>${c}</option>`).join("");
-county.innerHTML=opts;
-businessCounty.innerHTML=counties.map(c=>`<option>${c}</option>`).join("");
-pcounty.innerHTML=counties.map(c=>`<option>${c}</option>`).join("");
+  <!-- Forgot Password Modal -->
+  <div id="forgotModal" class="modal">
+    <div class="modal-content">
+      <span onclick="closeModal('forgotModal')" style="cursor:pointer; float:right; font-size:22px; font-weight:bold;">&times;</span>
+      <h3>Reset Your Password</h3>
+      <p style="font-size:14px; color:#666;">Enter your registered email and a new password.</p>
+      <form id="forgotForm">
+        <input type="email" id="fEmail" placeholder="Enter your email" required>
+        <input type="password" id="nPass" placeholder="Enter new password" required>
+        <button type="submit" style="background:#007bff; width:100%; margin-top:10px;">Update Password</button>
+      </form>
+    </div>
+  </div>
 
-countyChips.innerHTML=["Nairobi","Nakuru","Mombasa","Kisumu","Migori","Kiambu","Kakamega","Uasin Gishu","Kisii","Nyeri","Machakos","Meru"].map(c=>`<button onclick="county.value='${c}';render()">${c}</button>`).join("");
-render();
+  <script>
+    // Local storage data initialization
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    let products = JSON.parse(localStorage.getItem("products")) || [];
+    let currentUser = JSON.parse(localStorage.getItem("currentUser")) || null;
 
-let words=["Shop local.","Find houses & plots.","Browse cars & rentals.","Connect across Kenya."];let wi=0;
-setInterval(()=>{if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;let el=document.getElementById("word");el.style.opacity=0;setTimeout(()=>{wi=(wi+1)%words.length;el.textContent=words[wi];el.style.opacity=1},300)},2600);
-</script></body></html>
+    function saveUsers() { localStorage.setItem("users", JSON.stringify(users)); }
+    function saveProducts() { localStorage.setItem("products", JSON.stringify(products)); }
+    
+    function showMsg(txt) {
+      let box = document.getElementById("msgBox");
+      box.innerText = txt;
+      box.style.display = "block";
+      setTimeout(() => { box.style.display = "none"; }, 5000);
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+
+    function openAuthModal(type) {
+      if (type === 'login') document.getElementById('loginModal').style.display = 'block';
+      if (type === 'register') document.getElementById('registerModal').style.display = 'block';
+    }
+
+    function openForgotModal() {
+      closeModal('loginModal');
+      document.getElementById('forgotModal').style.display = 'block';
+    }
+
+    // Check auth state on page load
+    window.onload = () => {
+      checkAuthState();
+      loadPublicProducts();
+    };
+
+    function checkAuthState() {
+      if (currentUser) {
+        document.getElementById("homeView").style.display = "none";
+        document.getElementById("sellerDashboard").style.display = "block";
+        document.querySelector("header div").style.display = "none";
+        document.getElementById("welcomeUser").innerText = `Logged in as: ${currentUser.name} (${currentUser.email})`;
+        loadSellerProducts();
+      } else {
+        document.getElementById("homeView").style.display = "block";
+        document.getElementById("sellerDashboard").style.display = "none";
+        document.querySelector("header div").style.display = "block";
+      }
+    }
+
+    // Registration & M-Pesa STK Push
+    document.getElementById("regForm").onsubmit = async (e) => {
+      e.preventDefault();
+      let name = document.getElementById("rName").value.trim();
+      let email = document.getElementById("rEmail").value.toLowerCase().trim();
+      let pass = document.getElementById("rPass").value.trim();
+      let phone = document.getElementById("rPhone").value.trim();
+
+      if (users.some(u => u.email === email)) {
+        showMsg("❌ Email already registered!");
+        return;
+      }
+
+      showMsg("⏳ Initiating M-Pesa STK Push... Check your phone.");
+
+      try {
+        let response = await fetch("https://business-connect-kenya.onrender.com/api/stk-push", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ phone: phone, amount: 10 })
+        });
+        let result = await response.json();
+
+        if (response.ok) {
+          users.push({ name, email, pass, phone });
+          saveUsers();
+          currentUser = { name, email, phone };
+          localStorage.setItem("currentUser", JSON.stringify(currentUser));
+          closeModal("registerModal");
+          showMsg("✅ Payment prompt sent! Registration successful.");
+          checkAuthState();
+        } else {
+          showMsg("❌ Payment failed: " + (result.message || "Unknown error"));
+        }
+      } catch (err) {
+        showMsg("❌ Connection error connecting to payment gateway.");
+      }
+    };
+
+    // Login Handler
+    document.getElementById("loginForm").onsubmit = (e) => {
+      e.preventDefault();
+      let email = document.getElementById("lEmail").value.toLowerCase().trim();
+      let pass = document.getElementById("lPass").value.trim();
+
+      let found = users.find(u => u.email === email && u.pass === pass);
+      if (found) {
+        currentUser = { name: found.name, email: found.email, phone: found.phone };
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        closeModal("loginModal");
+        showMsg("✅ Logged in successfully!");
+        checkAuthState();
+      } else {
+        showMsg("❌ Invalid email or password.");
+      }
+    };
+
+    // Password Reset Handler
+    document.getElementById("forgotForm").onsubmit = (e) => {
+      e.preventDefault();
+      let email = document.getElementById("fEmail").value.toLowerCase().trim();
+      let newPass = document.getElementById("nPass").value.trim();
+
+      let userRecord = users.find(u => u.email === email);
+      if (userRecord) {
+        userRecord.pass = newPass;
+        saveUsers();
+        showMsg("✅ Password updated successfully! Please log in.");
+        closeModal('forgotModal');
+        openAuthModal('login');
+      } else {
+        showMsg("❌ Email not found in our records.");
+      }
+    };
+
+    // Logout
+    function logout() {
+      currentUser = null;
+      localStorage.removeItem("currentUser");
+      checkAuthState();
+      loadPublicProducts();
+      showMsg("ℹ️ Logged out successfully.");
+    }
+
+    // Add Product Handler (Strictly bound to current seller)
+    document.getElementById("addProductForm").onsubmit = (e) => {
+      e.preventDefault();
+      if (!currentUser) return;
+
+      let newProduct = {
+        id: Date.now(),
+        sellerEmail: currentUser.email,
+        name: document.getElementById("prodName").value.trim(),
+        price: document.getElementById("prodPrice").value.trim(),
+        desc: document.getElementById("prodDesc").value.trim(),
+        image: document.getElementById("prodImage").value.trim()
+      };
+
+      products.push(newProduct);
+      saveProducts();
+      document.getElementById("addProductForm").reset();
+      loadSellerProducts();
+      loadPublicProducts();
+      showMsg("✅ Product added successfully!");
+    };
+
+    // Load Seller's Own Products
+    function loadSellerProducts() {
+      let container = document.getElementById("sellerProductsList");
+      if (!container || !currentUser) return;
+      
+      container.innerHTML = "";
+      let myProducts = products.filter(p => p.sellerEmail === currentUser.email);
+
+      if (myProducts.length === 0) {
+        container.innerHTML = "<p style='color:#666;'>You haven't added any products yet.</p>";
+        return;
+      }
+
+      myProducts.forEach(prod => {
+        let card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div>
+            <h4 style="margin:0 0 5px 0;">${prod.name}</h4>
+            <p style="margin:0 0 5px 0; font-weight:bold; color:#007bff;">KSh ${prod.price}</p>
+            <p style="margin:0; font-size: 13px; color: #666;">${prod.desc}</p>
+          </div>
+          <div>
+            <button onclick="deleteProduct(${prod.id})" style="background:#dc3545; padding:6px 12px; font-size:12px;">Delete</button>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Delete Product
+    function deleteProduct(id) {
+      let index = products.findIndex(p => p.id === id && p.sellerEmail === currentUser.email);
+      if (index !== -1) {
+        if (confirm("Are you sure you want to delete this product?")) {
+          products.splice(index, 1);
+          saveProducts();
+          loadSellerProducts();
+          loadPublicProducts();
+          showMsg("🗑️ Product deleted.");
+        }
+      } else {
+        showMsg("❌ Unauthorized action.");
+      }
+    }
+
+    // Load Public Catalog for Home View
+    function loadPublicProducts() {
+      let container = document.getElementById("publicProductsList");
+      if (!container) return;
+
+      container.innerHTML = "";
+      if (products.length === 0) {
+        container.innerHTML = "<p style='color:#666;'>No products listed yet. Register as a seller to add yours!</p>";
+        return;
+      }
+
+      products.forEach(prod => {
+        let card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <div>
+            <h4 style="margin:0 0 5px 0;">${prod.name}</h4>
+            <p style="margin:0 0 5px 0; font-weight:bold; color:#28a745;">KSh ${prod.price}</p>
+            <p style="margin:0; font-size: 13px; color: #666;">${prod.desc}</p>
+            <small style="color:#888;">Seller: ${prod.sellerEmail}</small>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -61,16 +61,43 @@ let items=JSON.parse(localStorage.getItem("bcitems")||"null")||sample.map((x,i)=
 function msg(t){let x=document.getElementById("toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),3500)}function save(){localStorage.setItem("bcitems",JSON.stringify(items));localStorage.setItem("bcusers",JSON.stringify(users))}function register(){document.getElementById("regModal").classList.add("show")}function login(){document.getElementById("loginModal").classList.add("show")}function closeM(id){document.getElementById(id).classList.remove("show")}
 
 function render(){let q=document.getElementById("search").value.toLowerCase(),c=document.getElementById("county").value;let a=items.filter(p=>(!q||[p.name,p.category,p.county,p.town,p.owner].join(" ").toLowerCase().includes(q))&&(!c||p.county===c));document.getElementById("catalogue").innerHTML=a.map(p=>`<article class="card"><img src="${p.image||'https://images.unsplash.com/photo-1493723843671-1d655e66ac1c?auto=format&fit=crop&w=650&q=80'}" alt="${p.name}"><div class="body"><h3>${p.name}</h3><div class="muted">${p.owner||"Local business"} · <span style="cursor:pointer;color:#246b58;text-decoration:underline;font-weight:700;" onclick="whatsapp('${p.phone||'0799446312'}','${p.name}')">${p.phone||'0799446312'}</span></div><div class="muted">📍 ${p.town?p.town+", ":""}${p.county||"Kenya"}</div><div class="price">KSh ${Number(p.price).toLocaleString()}</div><button class="btn primary" onclick="whatsapp('${p.phone||'0799446312'}','${p.name}')">WhatsApp enquiry</button></div></article>`).join("")||"<p>No matching listings yet.</p>"}function cat(c){document.getElementById("search").value=c;render()}function whatsapp(phone,name){let targetPhone=phone||"0799446312";let n=targetPhone.replace(/\D/g,"");if(n.startsWith("0"))n="254"+n.slice(1);window.open("https://wa.me/"+n+"?text="+encodeURIComponent("Hello, I am enquiring about "+name+" on Biashara Connect Kenya."),"_blank")}
-
-document.getElementById("regForm").onsubmit=e=>{
+document.getElementById("regForm").onsubmit = async (e) => {
   e.preventDefault();
-  let email=remail.value.toLowerCase();
-  let phone=rphone.value.trim();
-  if(users.some(u=>u.email===email)){msg("Email already registered.");return}
-  let btn=document.getElementById("stkBtn");
-  btn.disabled=true;
-  btn.textContent="⏳ Sending M-Pesa STK Push to "+phone+"...";
-  msg("STK Push sent to "+phone+". Please check your phone to enter M-Pesa PIN.");
+  let email = remail.value.toLowerCase();
+  let phone = rphone.value.trim();
+  if (users.some(u => u.email === email)) { msg("Email already registered."); return; }
+
+  let btn = document.getElementById("stkBtn");
+  btn.disabled = true;
+  btn.textContent = "⏳ Sending M-Pesa STK Push to " + phone + "...";
+  msg("STK Push sent to " + phone + ". Check your phone and enter your PIN.");
+
+  try {
+    let response = await fetch('https://business-connect-kenya.onrender.com/api/stk-push', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ phone: phone, amount: 500 })
+    });
+    let result = await response.json();
+
+    if (result.success) {
+      user = { id: Date.now(), name: rname.value, email, pass: rpass.value, phone, profile: { phone }, paid: true };
+      users.push(user);
+      save();
+      closeM("regModal");
+      openDash();
+      msg("✅ M-Pesa Payment Prompt Sent! Enter your PIN.");
+    } else {
+      msg("❌ Payment failed. Please check details.");
+      btn.disabled = false;
+      btn.textContent = "Pay KSh 500 & Register via M-Pesa";
+    }
+  } catch (err) {
+    msg("❌ Network error connecting to payment server.");
+    btn.disabled = false;
+    btn.textContent = "Pay KSh 500 & Register via M-Pesa";
+  }
+};
 
   setTimeout(()=>{
     btn.disabled=false;
